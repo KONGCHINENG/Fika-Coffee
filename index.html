@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Come Fika Coffee · Kampung Attap, Kuala Lumpur</title>
+  <meta name="description" content="Come Fika Coffee — a neighbourhood coffee bar on Jalan Talalla, Kampung Attap, KL. Espresso classics, iced signature lattes, matcha and tea. Open daily 7am–12am. Rated 5.0 on Google." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111111;
+      --ink-soft: #3b3b3b;
+      --muted: #6b6b6b;
+      --paper: #ffffff;
+      --tint: #f5f6f8;
+      --line: #e6e7ea;
+      --blue: #2347d6;
+      --blue-dark: #1a36a8;
+      --blue-soft: #eaeefd;
+      --radius: 18px;
+      --shadow: 0 18px 40px -22px rgba(17, 17, 17, .25);
+      --font-display: "Manrope", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+    .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+    .icon { width: 20px; height: 20px; flex-shrink: 0; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; letter-spacing: -.02em; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--blue); transform: rotate(45deg); }
+    section { padding: 96px 0; }
+    .section-head { max-width: 620px; margin-bottom: 48px; }
+    .section-head h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-top: 12px; }
+    .section-head p { color: var(--muted); margin: 16px 0 0; font-size: 17px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 24px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: var(--blue); }
+    .btn-ghost { border: 1.5px solid var(--ink); color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: #fff; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, .88); backdrop-filter: saturate(160%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .02em; }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--ink);
+      display: grid; place-items: center;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink-soft); transition: color .2s ease; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { display: inline-flex; }
+    .menu-toggle {
+      display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer;
+      border-radius: 10px; color: var(--ink);
+    }
+
+    /* Hero */
+    .hero { padding: 72px 0 96px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
+    .hero h1 { font-size: clamp(44px, 7.5vw, 84px); font-weight: 800; margin: 18px 0 0; }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero-lead { font-size: 18px; color: var(--ink-soft); max-width: 500px; margin: 24px 0 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .fact strong { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 800; }
+    .fact span { font-size: 14px; color: var(--muted); }
+    .stars { color: var(--blue); letter-spacing: 1px; }
+
+    .hero-visual { position: relative; display: grid; place-items: center; }
+    .badge {
+      position: relative; width: min(420px, 100%); aspect-ratio: 1; border-radius: 50%;
+      background: var(--tint); display: grid; place-items: center;
+    }
+    .badge-ring { position: absolute; inset: 0; animation: spin 40s linear infinite; }
+    .badge-ring text { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: 6px; fill: var(--ink); }
+    .badge-cup { width: 46%; }
+    .badge-year {
+      position: absolute; right: 2%; top: 12%;
+      background: var(--blue); color: #fff; border-radius: 999px; padding: 10px 16px;
+      font-family: var(--font-display); font-weight: 800; font-size: 14px; box-shadow: var(--shadow);
+    }
+    .badge-open {
+      position: absolute; left: 0; bottom: 10%;
+      background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px;
+      box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px; font-size: 14px;
+    }
+    .badge-open b { display: block; font-size: 15px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #1fa45a; box-shadow: 0 0 0 4px rgba(31, 164, 90, .18); }
+    .dot.closed { background: #9a9a9a; box-shadow: 0 0 0 4px rgba(154, 154, 154, .18); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Strip */
+    .strip { background: var(--ink); color: #fff; padding: 18px 0; overflow: hidden; }
+    .strip-track { display: flex; gap: 40px; width: max-content; animation: marquee 32s linear infinite; }
+    .strip span { font-family: var(--font-display); font-weight: 700; font-size: 18px; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+    .strip span::after { content: "✦"; color: var(--blue); font-size: 14px; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .about-copy p { color: var(--ink-soft); font-size: 17px; margin: 0 0 16px; }
+    .pillars { display: grid; gap: 16px; }
+    .pillar {
+      display: flex; gap: 16px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius);
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .pillar:hover { border-color: var(--ink); }
+    .pillar-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; flex-shrink: 0; }
+    .pillar h3 { font-size: 18px; font-weight: 700; }
+    .pillar p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+
+    /* Menu */
+    .menu { background: var(--tint); }
+    .menu-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .tab {
+      min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--line);
+      background: #fff; font: 600 15px var(--font-body); color: var(--ink-soft); cursor: pointer;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .tab:hover { border-color: var(--ink); color: var(--ink); }
+    .tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .menu-panel { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadow); }
+    .menu-panel[hidden] { display: none; }
+    .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+    .panel-head h3 { font-size: 28px; font-weight: 800; }
+    .note { font-size: 14px; color: var(--blue); font-weight: 600; background: var(--blue-soft); padding: 6px 12px; border-radius: 999px; }
+    .items { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; list-style: none; margin: 0; padding: 0; }
+    .item { display: flex; align-items: baseline; gap: 12px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+    .item-name { font-weight: 600; font-size: 16px; }
+    .item-tag { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-left: 6px; }
+    .item-fill { flex: 1; }
+    .item-price { font-family: var(--font-display); font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .flavours { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 12px 0 0; }
+    .flavours li { padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 500; font-size: 15px; }
+    .addon-sub { font-size: 15px; font-weight: 700; margin: 32px 0 0; font-family: var(--font-display); }
+
+    /* Reviews */
+    .reviews-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+    .reviews-head .section-head { margin-bottom: 0; }
+    .score { display: flex; align-items: center; gap: 16px; }
+    .score-num { font-family: var(--font-display); font-size: 56px; font-weight: 800; line-height: 1; }
+    .score small { display: block; color: var(--muted); font-size: 14px; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .review { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 16px; margin: 0; }
+    .review blockquote { margin: 0; font-size: 18px; font-weight: 500; line-height: 1.5; font-family: var(--font-display); }
+    .review figcaption { margin-top: auto; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; font-weight: 700; }
+    .review figcaption b { display: block; color: var(--ink); font-size: 15px; }
+
+    /* Visit */
+    .visit { background: var(--ink); color: #fff; }
+    .visit .section-head p { color: #b9b9b9; }
+    .visit .eyebrow { color: #8ea4ff; }
+    .visit .eyebrow::before { background: #8ea4ff; }
+    .visit-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: stretch; }
+    .info-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+    .info-list li { display: flex; gap: 16px; }
+    .info-list .pillar-icon { background: rgba(255, 255, 255, .08); color: #fff; }
+    .info-list h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .info-list p { margin: 0; color: #c9c9c9; font-size: 15px; }
+    .hours { width: 100%; max-width: 320px; border-collapse: collapse; font-size: 15px; color: #c9c9c9; }
+    .hours td { padding: 3px 0; }
+    .hours td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+    .hours tr.today td { color: #fff; font-weight: 600; }
+    .visit .btn-primary { background: #fff; color: var(--ink); margin-top: 32px; }
+    .visit .btn-primary:hover { background: #8ea4ff; }
+    .map { border-radius: 24px; overflow: hidden; min-height: 400px; background: #222; }
+    .map iframe { width: 100%; height: 100%; min-height: 400px; border: 0; display: block; filter: grayscale(.4); }
+
+    /* Footer */
+    footer { background: var(--ink); color: #9a9a9a; border-top: 1px solid #262626; padding: 28px 0; font-size: 14px; }
+    .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+    .foot .brand { color: #fff; font-size: 16px; }
+    .foot .brand-mark { border-color: #fff; width: 30px; height: 30px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      .hero-grid, .about-grid, .visit-grid { grid-template-columns: 1fr; gap: 48px; }
+      .badge { width: min(320px, 80vw); }
+      .badge-year { right: 6%; top: 6%; }
+      .review-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      section { padding: 72px 0; }
+      .hero { padding: 40px 0 72px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-cta { display: none; }
+      .nav-links {
+        position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+        background: #fff; border-bottom: 1px solid var(--line); padding: 8px 16px 16px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 14px 0; font-size: 17px; border-bottom: 1px solid var(--line); }
+      .menu-panel { padding: 24px 20px; border-radius: 20px; }
+      .items { grid-template-columns: 1fr; }
+      .tabs-scroll { overflow-x: auto; margin-inline: -16px; padding-inline: 16px; }
+      .menu-tabs { flex-wrap: nowrap; width: max-content; }
+      .badge-open { left: 4%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .badge-ring, .strip-track { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 22 2l-9 19-2-8-8-2Z"/></symbol>
+  </svg>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="Come Fika Coffee, home">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg></span>
+        COME FIKA
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="#visit">Get directions</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Kampung Attap · Est. 2024</span>
+          <h1>Take a break.<br />Come <em>fika</em>.</h1>
+          <p class="hero-lead">A small neighbourhood coffee bar on Jalan Talalla, open from early morning to midnight. Espresso done properly, iced signature lattes, matcha and tea, all at honest prices.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">See the menu <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#visit">Find us</a>
+          </div>
+          <div class="hero-facts">
+            <div class="fact"><strong>5.0 <span class="stars" aria-hidden="true">★★★★★</span></strong><span>12 Google reviews</span></div>
+            <div class="fact"><strong>7am–12am</strong><span>Open every day</span></div>
+            <div class="fact"><strong>From RM8</strong><span>Dine-in &amp; takeaway</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="badge">
+            <svg class="badge-ring" viewBox="0 0 300 300">
+              <defs><path id="circle" d="M150,150 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" /></defs>
+              <text textLength="762" lengthAdjust="spacing"><textPath href="#circle" textLength="762" lengthAdjust="spacing">COME FIKA ✦ COFFEE ✦ COME FIKA ✦ COFFEE ✦ </textPath></text>
+            </svg>
+            <svg class="badge-cup" viewBox="0 0 120 150" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 34h84l-4 14H22z" fill="#fff"/>
+              <path d="M26 22h68a6 6 0 0 1 6 6v6H20v-6a6 6 0 0 1 6-6Z" fill="#fff"/>
+              <path d="M22 48l10 92h56l10-92" fill="#fff"/>
+              <path d="M26 82h68l-3 30H29z" fill="#2347d6" stroke="#111"/>
+              <circle cx="50" cy="12" r="5" fill="#111"/><circle cx="70" cy="12" r="5" fill="#111"/>
+            </svg>
+          </div>
+          <div class="badge-year">EST 2024</div>
+          <div class="badge-open"><span class="dot" id="open-dot"></span><span><b id="open-status">Open now</b><span id="open-sub">Until 12am tonight</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>Espresso</span><span>Flat White</span><span>Hazelnut Latte</span><span>Yuzu Matcha</span><span>Pumpkin Spice</span><span>Earl Grey</span><span>Caramel Macchiato</span><span>Peach Matcha</span>
+        <span>Espresso</span><span>Flat White</span><span>Hazelnut Latte</span><span>Yuzu Matcha</span><span>Pumpkin Spice</span><span>Earl Grey</span><span>Caramel Macchiato</span><span>Peach Matcha</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-copy reveal">
+          <span class="eyebrow">What is fika?</span>
+          <h2 style="font-size:clamp(32px,5vw,48px);font-weight:800;margin:12px 0 24px">A coffee break, taken seriously.</h2>
+          <p><em>Fika</em> is the Swedish habit of stopping for coffee and something sweet, with friends or on your own. It isn't about rushing a caffeine fix. It's about taking ten minutes for yourself.</p>
+          <p>That's what we're here for. Grab a latte on your way to work, or slow down with a matcha after dinner. We're open until midnight.</p>
+        </div>
+        <div class="pillars">
+          <div class="pillar reveal">
+            <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg></div>
+            <div><h3>Coffee classics, done right</h3><p>Espresso, long black, latte, cappuccino and flat white, pulled to order.</p></div>
+          </div>
+          <div class="pillar reveal">
+            <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></div>
+            <div><h3>Matcha &amp; tea series</h3><p>Strawberry, hazelnut, yuzu and peach matcha, plus a full range of hot and iced teas.</p></div>
+          </div>
+          <div class="pillar reveal">
+            <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg></div>
+            <div><h3>Easy to grab and go</h3><p>Dine in or take away. Quick enough for the morning commute.</p></div>
+          </div>
+          <div class="pillar reveal">
+            <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></div>
+            <div><h3>Honest prices</h3><p>Espresso from RM8, signature drinks from RM14.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Drinks menu</span>
+          <h2>Something for every break.</h2>
+          <p>Prices in Ringgit. Oat or almond milk available for any drink.</p>
+        </div>
+
+        <div class="tabs-scroll">
+          <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+            <button class="tab" role="tab" id="tab-coffee" aria-selected="true" aria-controls="panel-coffee">Coffee Classics</button>
+            <button class="tab" role="tab" id="tab-signature" aria-selected="false" aria-controls="panel-signature" tabindex="-1">Signature (Iced)</button>
+            <button class="tab" role="tab" id="tab-tea" aria-selected="false" aria-controls="panel-tea" tabindex="-1">Tea Series</button>
+            <button class="tab" role="tab" id="tab-addons" aria-selected="false" aria-controls="panel-addons" tabindex="-1">Add-ons</button>
+          </div>
+        </div>
+
+        <div class="menu-panel" role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee">
+          <div class="panel-head"><h3>Coffee Classics</h3><span class="note">+RM1 for iced</span></div>
+          <ul class="items">
+            <li class="item"><span class="item-name">Espresso</span><span class="item-fill"></span><span class="item-price">RM8</span></li>
+            <li class="item"><span class="item-name">Latte</span><span class="item-fill"></span><span class="item-price">RM12</span></li>
+            <li class="item"><span class="item-name">Doppio</span><span class="item-fill"></span><span class="item-price">RM9</span></li>
+            <li class="item"><span class="item-name">Cappuccino</span><span class="item-fill"></span><span class="item-price">RM12</span></li>
+            <li class="item"><span class="item-name">Long Black / Americano</span><span class="item-fill"></span><span class="item-price">RM10</span></li>
+            <li class="item"><span class="item-name">Flat White</span><span class="item-fill"></span><span class="item-price">RM12</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" role="tabpanel" id="panel-signature" aria-labelledby="tab-signature" hidden>
+          <div class="panel-head"><h3>Signature Drinks</h3><span class="note">Served iced</span></div>
+          <ul class="items">
+            <li class="item"><span class="item-name">Vanilla Latte</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Matcha Latte</span><span class="item-fill"></span><span class="item-price">RM15</span></li>
+            <li class="item"><span class="item-name">Hazelnut Latte</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Caramel Macchiato</span><span class="item-fill"></span><span class="item-price">RM16</span></li>
+            <li class="item"><span class="item-name">Toffee Nut Latte</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Strawberry Matcha</span><span class="item-fill"></span><span class="item-price">RM16</span></li>
+            <li class="item"><span class="item-name">Pumpkin Spice Latte</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Hazelnut Matcha</span><span class="item-fill"></span><span class="item-price">RM16</span></li>
+            <li class="item"><span class="item-name">Mocha</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Yuzu Matcha Latte</span><span class="item-fill"></span><span class="item-price">RM16</span></li>
+            <li class="item"><span class="item-name">Chocolate</span><span class="item-fill"></span><span class="item-price">RM14</span></li>
+            <li class="item"><span class="item-name">Peach Matcha Latte</span><span class="item-fill"></span><span class="item-price">RM16</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" role="tabpanel" id="panel-tea" aria-labelledby="tab-tea" hidden>
+          <div class="panel-head"><h3>Tea Series</h3><span class="note">+RM1 for iced</span></div>
+          <ul class="items">
+            <li class="item"><span class="item-name">Iced Lemon Tea</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+            <li class="item"><span class="item-name">Earl Grey Supreme</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+            <li class="item"><span class="item-name">Iced Peach Tea</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+            <li class="item"><span class="item-name">Mint Green Tea</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+            <li class="item"><span class="item-name">English Breakfast</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+            <li class="item"><span class="item-name">Chamomile Tea</span><span class="item-fill"></span><span class="item-price">RM11</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" hidden>
+          <div class="panel-head"><h3>Drink Add-ons</h3><span class="note">Make it yours</span></div>
+          <ul class="items">
+            <li class="item"><span class="item-name">Extra espresso shot</span><span class="item-fill"></span><span class="item-price">+RM2</span></li>
+            <li class="item"><span class="item-name">Upgrade to oat / almond milk</span><span class="item-fill"></span><span class="item-price">+RM2</span></li>
+          </ul>
+          <p class="addon-sub">Syrups &amp; flavours</p>
+          <ul class="flavours">
+            <li>Strawberry</li><li>Hazelnut</li><li>Vanilla</li><li>Toffee Nut</li><li>Yuzu</li><li>Pumpkin Spice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="wrap">
+        <div class="reviews-head">
+          <div class="section-head reveal">
+            <span class="eyebrow">Reviews</span>
+            <h2>Our regulars say it best.</h2>
+          </div>
+          <div class="score reveal">
+            <span class="score-num">5.0</span>
+            <span><span class="stars" aria-hidden="true">★★★★★</span><small>12 reviews on Google</small></span>
+          </div>
+        </div>
+        <div class="review-grid">
+          <figure class="review reveal">
+            <blockquote>“Super convenient and the coffee exceeded my expectations!”</blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">L</span><span><b>Lennon Tan</b>Google review</span></figcaption>
+          </figure>
+          <figure class="review reveal">
+            <blockquote>“Great service, great coffee.”</blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">J</span><span><b>Jason Zhao</b>Local Guide · Google review</span></figcaption>
+          </figure>
+          <figure class="review reveal">
+            <blockquote>“The coffee is so good, must come here again.”</blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">N</span><span><b>Nicole Agnesia</b>Google review</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="visit">
+      <div class="wrap visit-grid">
+        <div>
+          <div class="section-head reveal" style="margin-bottom:40px">
+            <span class="eyebrow">Visit us</span>
+            <h2>Come by for fika.</h2>
+            <p>We're on Jalan Talalla in Kampung Attap, a short walk from the city centre.</p>
+          </div>
+          <ul class="info-list">
+            <li>
+              <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></div>
+              <div><h3>Address</h3><p>8, Jalan Talalla, Kampung Attap,<br />50460 Kuala Lumpur</p></div>
+            </li>
+            <li>
+              <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></div>
+              <div style="flex:1">
+                <h3>Opening hours</h3>
+                <table class="hours" aria-label="Opening hours">
+                  <tbody id="hours-body">
+                    <tr data-day="1"><td>Monday</td><td>7am – 12am</td></tr>
+                    <tr data-day="2"><td>Tuesday</td><td>7am – 12am</td></tr>
+                    <tr data-day="3"><td>Wednesday</td><td>7am – 12am</td></tr>
+                    <tr data-day="4"><td>Thursday</td><td>7am – 12am</td></tr>
+                    <tr data-day="5"><td>Friday</td><td>7am – 12am</td></tr>
+                    <tr data-day="6"><td>Saturday</td><td>7am – 12am</td></tr>
+                    <tr data-day="0"><td>Sunday</td><td>7am – 12am</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li>
+              <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg></div>
+              <div><h3>Service</h3><p>Dine-in &amp; takeaway · RM1–40 per person</p></div>
+            </li>
+          </ul>
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/QxLUwHfi1kjKxhKa9" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-nav"/></svg> Open in Google Maps
+          </a>
+        </div>
+        <div class="map reveal">
+          <iframe title="Map showing Come Fika Coffee on Jalan Talalla" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Come%20Fika%20Coffee%2C%20Jalan%20Talalla%2C%20Kuala%20Lumpur&amp;ll=3.1374564,101.699824&amp;z=17&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a href="#top" class="brand">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true" style="width:16px;height:16px"><use href="#i-cup"/></svg></span>
+        COME FIKA COFFEE
+      </a>
+      <span>8, Jalan Talalla, Kampung Attap, KL · Open daily 7am–12am</span>
+      <span>© <span id="year">2026</span> Come Fika Coffee</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    links.addEventListener('click', e => {
+      if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    });
+
+    // Menu tabs (with arrow-key support)
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    function selectTab(tab) {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      tab.focus({ preventScroll: true });
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') selectTab(tabs[(i + 1) % tabs.length]);
+        if (e.key === 'ArrowLeft') selectTab(tabs[(i - 1 + tabs.length) % tabs.length]);
+      });
+    });
+
+    // Open/closed status in Kuala Lumpur time (open 7:00–24:00 daily)
+    const kl = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' }));
+    const h = kl.getHours();
+    const isOpen = h >= 7;
+    document.getElementById('open-status').textContent = isOpen ? 'Open now' : 'Closed now';
+    document.getElementById('open-sub').textContent = isOpen ? 'Until 12am tonight' : 'Opens at 7am';
+    document.getElementById('open-dot').classList.toggle('closed', !isOpen);
+    const today = document.querySelector(`#hours-body tr[data-day="${kl.getDay()}"]`);
+    if (today) today.classList.add('today');
+    document.getElementById('year').textContent = kl.getFullYear();
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
